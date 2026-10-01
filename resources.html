@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Resources | Anurag Toastmasters Club</title>
+
+<style>
+
+/* =========================================================
+   RESET + VARIABLES
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --black: #0B1117;
+    --blue: #004165;
+    --offwhite: #F7F6F2;
+    --softblue: #DCE6EA;
+    --white: #FFFFFF;
+    --text: #0B1117;
+    --muted: #52616B;
+    --line: #D5E0E4;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--offwhite);
+    color: var(--text);
+    line-height: 1.5;
+    overflow-x: hidden;
+}
+
+h1, h2, h3 {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.08;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font-family: inherit;
+}
+
+.container {
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
+    padding: 0 22px;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    background: rgba(11, 17, 23, 0.96);
+    backdrop-filter: blur(10px);
+
+    padding: 16px 0;
+}
+
+.nav-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 32px;
+    width: auto;
+    display: block;
+}
+
+.nav-button {
+    background: white;
+    color: var(--black);
+
+    padding: 9px 15px;
+    border-radius: 30px;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.nav-links {
+    display: none;
+    align-items: center;
+    gap: 22px;
+
+    color: #DCE6EA;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.nav-links a {
+    padding: 4px 0;
+    border-bottom: 2px solid transparent;
+}
+
+.nav-links a.current,
+.nav-links a:hover {
+    color: white;
+    border-bottom-color: #8CB8CC;
+}
+
+
+/* MOBILE MENU BUTTON */
+
+.nav-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 36px;
+    height: 36px;
+
+    background: transparent;
+    border: 1px solid #52616B;
+    border-radius: 8px;
+
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+
+/* MOBILE MENU */
+
+.nav-mobile-menu {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+
+    padding: 14px 0 6px;
+}
+
+.nav-mobile-menu.open {
+    display: flex;
+}
+
+.nav-mobile-menu a {
+    color: #DCE6EA;
+    font-size: 14px;
+    font-weight: 700;
+
+    padding: 10px 4px;
+
+    border-bottom: 1px solid #1B2832;
+}
+
+.nav-mobile-menu a.current {
+    color: #8CB8CC;
+}
+
+
+/* DESKTOP NAVIGATION */
+
+@media (min-width: 768px) {
+
+    .nav-links {
+        display: flex;
+    }
+
+    .nav-toggle {
+        display: none;
+    }
+
+    .nav-mobile-menu {
+        display: none !important;
+    }
+
+}
+
+
+/* =========================================================
+   HERO / INTRO
+========================================================= */
+
+.resources-hero {
+    background: var(--black);
+    color: white;
+
+    padding: 90px 0 85px;
+}
+
+.resources-label {
+    color: #8CB8CC;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    margin-bottom: 22px;
+}
+
+.resources-hero h1 {
+    font-size: clamp(40px, 8vw, 68px);
+    letter-spacing: -3px;
+
+    max-width: 700px;
+
+    margin-bottom: 25px;
+}
+
+.resources-hero h1 span {
+    color: #8CB8CC;
+}
+
+.resources-hero p {
+    color: #DCE6EA;
+
+    font-size: 16px;
+    line-height: 1.6;
+
+    max-width: 570px;
+}
+
+
+/* =========================================================
+   RESOURCE SECTION
+========================================================= */
+
+.resources-section {
+    background: var(--offwhite);
+
+    padding: 80px 0 100px;
+}
+
+.resource-intro {
+    margin-bottom: 45px;
+}
+
+.resource-intro h2 {
+    font-size: 38px;
+    letter-spacing: -1.8px;
+
+    margin-bottom: 15px;
+}
+
+.resource-intro p {
+    color: var(--muted);
+
+    font-size: 15px;
+
+    max-width: 600px;
+}
+
+
+/* =========================================================
+   RESOURCE LIST
+========================================================= */
+
+.resource-list {
+    border-top: 1px solid var(--line);
+}
+
+.resource-item {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 30px;
+
+    padding: 30px 5px;
+
+    border-bottom: 1px solid var(--line);
+
+    transition:
+        padding 0.25s ease,
+        background 0.25s ease;
+}
+
+.resource-item:hover {
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.resource-item-content {
+    flex: 1;
+}
+
+.resource-category {
+    color: var(--blue);
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 1.7px;
+
+    margin-bottom: 9px;
+}
+
+.resource-item h3 {
+    font-size: 23px;
+    letter-spacing: -0.5px;
+
+    margin-bottom: 7px;
+}
+
+.resource-item p {
+    color: var(--muted);
+
+    font-size: 14px;
+    line-height: 1.5;
+
+    max-width: 600px;
+}
+
+.resource-arrow {
+    flex-shrink: 0;
+
+    width: 42px;
+    height: 42px;
+
+    border: 1px solid #B8C8CE;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--blue);
+
+    font-size: 18px;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.resource-item:hover .resource-arrow {
+    background: var(--blue);
+    color: white;
+    border-color: var(--blue);
+
+    transform: translateX(3px);
+}
+
+
+/* =========================================================
+   SCRIPT LIST
+========================================================= */
+
+.script-list {
+    display: none;
+
+    margin: 0 5px;
+
+    border-bottom: 1px solid var(--line);
+}
+
+.script-list.open {
+    display: block;
+}
+
+.script-item {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 18px 15px;
+
+    background: rgba(220, 230, 234, 0.35);
+
+    border-top: 1px solid var(--line);
+
+    color: var(--text);
+
+    transition:
+        background 0.2s ease,
+        padding 0.2s ease;
+}
+
+.script-item:hover {
+    background: var(--softblue);
+    padding-left: 20px;
+}
+
+.script-item-name {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.pdf-icon {
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #E8EEF0;
+
+    border: 1px solid #B8C8CE;
+    border-radius: 6px;
+
+    color: var(--blue);
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.script-arrow {
+    color: var(--blue);
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   OFFICIAL TOASTMASTERS RESOURCES
+========================================================= */
+
+.official-section {
+    background: var(--blue);
+    color: white;
+
+    padding: 80px 0;
+}
+
+.official-label {
+    color: #8CB8CC;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    margin-bottom: 15px;
+}
+
+.official-section h2 {
+    font-size: 38px;
+    letter-spacing: -1.8px;
+
+    margin-bottom: 15px;
+}
+
+.official-section > .container > p {
+    color: #DCE6EA;
+
+    font-size: 15px;
+    max-width: 600px;
+
+    margin-bottom: 40px;
+}
+
+.official-list {
+    border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+.official-item {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 25px;
+
+    padding: 27px 5px;
+
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+
+    transition: padding 0.25s ease;
+}
+
+.official-item:hover {
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.official-item h3 {
+    font-size: 20px;
+
+    margin-bottom: 6px;
+}
+
+.official-item p {
+    color: #DCE6EA;
+
+    font-size: 13px;
+
+    max-width: 570px;
+}
+
+.official-arrow {
+    color: #8CB8CC;
+
+    font-size: 20px;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    background: var(--black);
+    color: #DCE6EA;
+
+    padding: 35px 0;
+}
+
+.footer-logo img {
+    height: 26px;
+    width: auto;
+
+    display: block;
+
+    margin-bottom: 12px;
+}
+
+.footer-title {
+    color: white;
+
+    font-weight: 800;
+    font-size: 15px;
+}
+
+.footer-text {
+    font-size: 12px;
+
+    margin-top: 8px;
+}
+
+.footer-instagram {
+    display: inline-block;
+
+    margin-top: 14px;
+
+    color: #8CB8CC;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .resources-hero {
+        padding: 70px 0 65px;
+    }
+
+    .resources-hero h1 {
+        letter-spacing: -2px;
+    }
+
+    .resources-section,
+    .official-section {
+        padding: 65px 0 75px;
+    }
+
+    .resource-intro h2,
+    .official-section h2 {
+        font-size: 32px;
+    }
+
+    .resource-item {
+        padding: 25px 2px;
+        gap: 18px;
+    }
+
+    .resource-item:hover {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .resource-item h3 {
+        font-size: 20px;
+    }
+
+    .resource-item p {
+        font-size: 13px;
+    }
+
+    .resource-arrow {
+        width: 36px;
+        height: 36px;
+
+        font-size: 16px;
+    }
+
+    .official-item {
+        padding: 24px 2px;
+    }
+
+    .official-item h3 {
+        font-size: 18px;
+    }
+
+    .script-item {
+        padding: 16px 10px;
+    }
+
+    .script-item-name {
+        font-size: 13px;
+        line-height: 1.35;
+    }
+
+}
+/* =========================================================
+   FLOATING LINKS
+========================================================= */
+
+.floating-links {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.float-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+.float-btn.whatsapp {
+  background: #25D366;
+}
+
+.float-btn.instagram {
+  background: linear-gradient(
+    45deg,
+    #f09433,
+    #e6683c,
+    #dc2743,
+    #cc2366,
+    #bc1888
+  );
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
+<nav>
+
+<div class="container nav-inner">
+
+    <div class="logo">
+        <img
+            src="logo.jpg"
+            alt="Anurag Toastmasters Logo">
+    </div>
+
+
+    <!-- DESKTOP NAV -->
+
+    <div class="nav-links">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="agenda.html">
+            Agenda
+        </a>
+
+        <a
+            href="resources.html"
+            class="current">
+
+            Resources
+
+        </a>
+
+    </div>
+
+
+    <!-- RIGHT SIDE -->
+
+    <div style="display:flex; align-items:center; gap:10px;">
+
+        <a
+            href="https://forms.gle/u5iXz8gvccPTfWBy9"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="nav-button">
+
+            Visit Us
+
+        </a>
+
+
+        <!-- MOBILE MENU BUTTON -->
+
+        <button
+            class="nav-toggle"
+            id="navToggle"
+            type="button"
+            aria-label="Open navigation menu"
+            aria-expanded="false">
+
+            ☰
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- MOBILE NAV MENU -->
+
+<div class="container">
+
+    <div
+        class="nav-mobile-menu"
+        id="navMobileMenu">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="agenda.html">
+            Agenda
+        </a>
+
+        <a
+            href="resources.html"
+            class="current">
+
+            Resources
+
+        </a>
+
+    </div>
+
+</div>
+
+</nav>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="resources-hero">
+
+<div class="container">
+
+    <div class="resources-label">
+        ANURAG TOASTMASTERS CLUB
+    </div>
+
+    <h1>
+        Everything you need
+        to keep <span>learning.</span>
+    </h1>
+
+    <p>
+        Official Toastmasters resources, meeting role scripts,
+        and useful tools to help you prepare, participate,
+        and keep improving.
+    </p>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     OFFICIAL TOASTMASTERS RESOURCES
+===================================================== -->
+
+<section class="official-section">
+
+<div class="container">
+
+    <div class="official-label">
+        TOASTMASTERS INTERNATIONAL
+    </div>
+
+    <h2>
+        Keep exploring.
+    </h2>
+
+    <p>
+        Explore official Toastmasters resources to learn more
+        about public speaking, leadership, Pathways, and
+        getting the most out of your membership.
+    </p>
+
+
+    <div class="official-list">
+
+
+        <!-- FIND A CLUB -->
+
+        <a
+            href="https://www.toastmasters.org/find-a-club"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="official-item">
+
+            <div>
+
+                <h3>
+                    Find a Club
+                </h3>
+
+                <p>
+                    Explore Toastmasters clubs and discover
+                    communities where you can practise speaking
+                    and leadership.
+                </p>
+
+            </div>
+
+            <div class="official-arrow">
+                →
+            </div>
+
+        </a>
+
+
+
+        <!-- PATHWAYS -->
+
+        <a
+            href="https://www.toastmasters.org/pathways"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="official-item">
+
+            <div>
+
+                <h3>
+                    Toastmasters Pathways
+                </h3>
+
+                <p>
+                    Explore the Toastmasters learning experience
+                    and the paths available to develop your
+                    communication and leadership skills.
+                </p>
+
+            </div>
+
+            <div class="official-arrow">
+                →
+            </div>
+
+        </a>
+
+
+
+        <!-- WHY TOASTMASTERS -->
+
+        <a
+            href="https://www.toastmasters.org/membership/why-toastmasters"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="official-item">
+
+            <div>
+
+                <h3>
+                    Why Toastmasters?
+                </h3>
+
+                <p>
+                    Learn more about how Toastmasters helps
+                    members develop communication and leadership
+                    skills.
+                </p>
+
+            </div>
+
+            <div class="official-arrow">
+                →
+            </div>
+
+        </a>
+
+
+
+        <!-- EDUCATIONAL RESOURCES -->
+
+        <a
+            href="https://www.toastmasters.org/resources"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="official-item">
+
+            <div>
+
+                <h3>
+                    Toastmasters Resources
+                </h3>
+
+                <p>
+                    Browse the official Toastmasters resource
+                    library for articles, guides, and educational
+                    materials.
+                </p>
+
+            </div>
+
+            <div class="official-arrow">
+                →
+            </div>
+
+        </a>
+
+
+
+        <!-- TOASTMASTERS MAGAZINE -->
+
+        <a
+            href="https://www.toastmasters.org/magazine"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="official-item">
+
+            <div>
+
+                <h3>
+                    Toastmasters Magazine
+                </h3>
+
+                <p>
+                    Read stories, ideas, and insights from the
+                    Toastmasters community around the world.
+                </p>
+
+            </div>
+
+            <div class="official-arrow">
+                →
+            </div>
+
+        </a>
+
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     YOUR RESOURCES
+     ROLE SCRIPTS + TIMER CARDS
+===================================================== -->
+
+<section class="resources-section">
+
+<div class="container">
+
+    <div class="resource-intro">
+
+        <div class="resources-label">
+            CLUB RESOURCES
+        </div>
+
+        <h2>
+            Start here.
+        </h2>
+
+        <p>
+            Use these resources before meetings to understand
+            your role, prepare properly, and get more out of
+            every meeting.
+        </p>
+
+    </div>
+
+
+    <div class="resource-list">
+
+
+        <!-- =================================================
+             MEETING ROLE SCRIPTS
+        ================================================= -->
+
+        <button
+            type="button"
+            class="resource-item"
+            id="scriptsToggle"
+            aria-expanded="false"
+            aria-controls="scriptList"
+            style="width:100%; background:transparent; border-left:0; border-right:0; text-align:left; cursor:pointer; color:inherit;">
+
+            <div class="resource-item-content">
+
+                <div class="resource-category">
+                    ROLE RESOURCES
+                </div>
+
+                <h3>
+                    Meeting Role Scripts
+                </h3>
+
+                <p>
+                    Open the scripts for Timer, Ah-Counter,
+                    Listener, Sergeant-at-Arms, Word Master
+                    and Grammarian, and other meeting roles.
+                </p>
+
+            </div>
+
+            <div
+                class="resource-arrow"
+                id="scriptsArrow">
+
+                →
+
+            </div>
+
+        </button>
+
+
+        <!-- =================================================
+             INDIVIDUAL SCRIPT PDFS
+        ================================================= -->
+
+        <div
+            class="script-list"
+            id="scriptList">
+
+
+            <!-- AH COUNTER -->
+
+            <a
+                href="scripts/Ah-Counter.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="script-item">
+
+                <div class="script-item-name">
+
+                    <span class="pdf-icon">
+                        PDF
+                    </span>
+
+                    Ah-Counter Role Script
+
+                </div>
+
+                <div class="script-arrow">
+                    →
+                </div>
+
+            </a>
+
+
+            <!-- LISTENER -->
+
+            <a
+                href="scripts/Active-Listner.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="script-item">
+
+                <div class="script-item-name">
+
+                    <span class="pdf-icon">
+                        PDF
+                    </span>
+
+                    Listener's Role Script
+
+                </div>
+
+                <div class="script-arrow">
+                    →
+                </div>
+
+            </a>
+
+
+            <!-- SERGEANT AT ARMS -->
+
+            <a
+                href="scripts/Sergeant-At-Arms.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="script-item">
+
+                <div class="script-item-name">
+
+                    <span class="pdf-icon">
+                        PDF
+                    </span>
+
+                    Sergeant-at-Arms (SAA) Role Script
+
+                </div>
+
+                <div class="script-arrow">
+                    →
+                </div>
+
+            </a>
+
+
+            <!-- TIMER -->
+
+            <a
+                href="scripts/Timer.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="script-item">
+
+                <div class="script-item-name">
+
+                    <span class="pdf-icon">
+                        PDF
+                    </span>
+
+                    Timer's Role Script
+
+                </div>
+
+                <div class="script-arrow">
+                    →
+                </div>
+
+            </a>
+
+
+            <!-- WORD MASTER + GRAMMARIAN -->
+
+            <a
+                href="scripts/word-master-grammarian.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="script-item">
+
+                <div class="script-item-name">
+
+                    <span class="pdf-icon">
+                        PDF
+                    </span>
+
+                    Word Master & Grammarian Role Script
+
+                </div>
+
+                <div class="script-arrow">
+                    →
+                </div>
+
+            </a>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             TIMER CARDS — POWERPOINT
+        ================================================= -->
+
+        <a
+            href="Timer Cards.pptx"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="resource-item">
+
+            <div class="resource-item-content">
+
+                <div class="resource-category">
+                    TOOLS
+                </div>
+
+                <h3>
+                    Timer Cards
+                </h3>
+
+                <p>
+                    A quick reference for understanding
+                    speech timing and the timing signals
+                    used during meetings.
+                </p>
+
+            </div>
+
+            <div class="resource-arrow">
+                →
+            </div>
+
+        </a>
+
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+<div class="container">
+
+    <div class="footer-logo">
+
+        
+
+    </div>
+
+
+    <div class="footer-title">
+        Anurag Toastmasters Club
+    </div>
+
+
+    <div class="footer-text">
+        Anurag University • District 225 • Division G • Area 1
+    </div>
+
+
+    <div
+        class="footer-text"
+        style="margin-top:6px;">
+
+        For queries, contact our VPM, TM ANUSHKA:
+
+        <a
+            href="tel:+918374008301"
+            style="color:#8CB8CC; font-weight:700;">
+
+            +91 8374008301
+
+        </a>
+
+    </div>
+
+
+    <a
+        href="https://www.instagram.com/anurag.toastmasters?igsh=cWU3YmJjYXFtaGRv"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="footer-instagram">
+
+        Follow us on Instagram →
+
+    </a>
+
+</div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+/* =========================================================
+   MOBILE NAVIGATION
+========================================================= */
+
+const navToggle = document.getElementById("navToggle");
+const navMobileMenu = document.getElementById("navMobileMenu");
+
+navToggle.addEventListener("click", function() {
+
+    const isOpen =
+        navMobileMenu.classList.toggle("open");
+
+    navToggle.textContent =
+        isOpen ? "✕" : "☰";
+
+    navToggle.setAttribute(
+        "aria-expanded",
+        isOpen
+    );
+
+});
+
+
+/* CLOSE MOBILE MENU WHEN A LINK IS CLICKED */
+
+const mobileLinks =
+    navMobileMenu.querySelectorAll("a");
+
+mobileLinks.forEach(function(link) {
+
+    link.addEventListener("click", function() {
+
+        navMobileMenu.classList.remove("open");
+
+        navToggle.textContent = "☰";
+
+        navToggle.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+    });
+
+});
+
+
+/* =========================================================
+   MEETING ROLE SCRIPTS — OPEN / CLOSE
+========================================================= */
+
+const scriptsToggle =
+    document.getElementById("scriptsToggle");
+
+const scriptList =
+    document.getElementById("scriptList");
+
+const scriptsArrow =
+    document.getElementById("scriptsArrow");
+
+
+scriptsToggle.addEventListener("click", function() {
+
+    const isOpen =
+        scriptList.classList.toggle("open");
+
+    scriptsToggle.setAttribute(
+        "aria-expanded",
+        isOpen
+    );
+
+    scriptsArrow.textContent =
+        isOpen ? "↑" : "→";
+
+});
+
+</script>
+
+<!-- =====================================================
+     FLOATING LINKS
+===================================================== -->
+
+<div class="floating-links">
+
+  <a
+    href="https://chat.whatsapp.com/IYww5osOOqo86K6lhRHre8"
+    target="_blank"
+    class="float-btn whatsapp"
+    title="Join our WhatsApp group"
+    aria-label="WhatsApp"
+  >
+    <svg
+      viewBox="0 0 24 24"
+      width="24"
+      height="24"
+      fill="white"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.87.5 3.62 1.44 5.14L2 22l5.09-1.53a9.87 9.87 0 0 0 4.95 1.34h.01c5.46 0 9.9-4.45 9.9-9.91C21.95 6.45 17.5 2 12.04 2zm5.72 14.13c-.24.68-1.4 1.3-1.93 1.35-.5.05-1.02.24-3.43-.72-2.9-1.16-4.77-4.13-4.91-4.32-.14-.19-1.17-1.56-1.17-2.98 0-1.41.74-2.1 1-2.39.26-.28.57-.35.76-.35.19 0 .38 0 .55.01.18.01.42-.07.65.5.24.58.82 2 .89 2.14.07.14.12.31.02.5-.1.19-.15.31-.3.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.02 1.12.99 2.06 1.3 2.35 1.45.29.14.46.12.63-.07.17-.19.72-.84.91-1.13.19-.29.38-.24.63-.14.26.1 1.66.78 1.94.93.28.14.47.21.54.33.07.12.07.7-.17 1.38z"/>
+    </svg>
+  </a>
+
+  <a
+    href="https://www.instagram.com/anurag.toastmasters?igsh=cWU3YmJjYXFtaGRv"
+    target="_blank"
+    class="float-btn instagram"
+    title="Follow us on Instagram"
+    aria-label="Instagram"
+  >
+    <svg
+      viewBox="0 0 24 24"
+      width="24"
+      height="24"
+      fill="none"
+      stroke="white"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <rect
+        x="2"
+        y="2"
+        width="20"
+        height="20"
+        rx="5.5"
+        ry="5.5"
+      />
+
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+
+      <line
+        x1="17.5"
+        y1="6.5"
+        x2="17.51"
+        y2="6.5"
+      />
+    </svg>
+  </a>
+
+</div>
+</body>
+
+</html>

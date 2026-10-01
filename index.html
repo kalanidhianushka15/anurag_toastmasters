@@ -1,0 +1,3128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Anurag Toastmasters Club</title>
+
+  <style>
+
+    /* =========================================================
+       RESET + VARIABLES
+    ========================================================= */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --black: #0B1117;
+      --blue: #004165;
+      --offwhite: #F7F6F2;
+      --softblue: #DCE6EA;
+      --white: #FFFFFF;
+      --text: #0B1117;
+      --muted: #52616B;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0B1117;
+      color: var(--text);
+      line-height: 1.5;
+      overflow-x: hidden;
+      padding-top: 70px;
+    }
+
+    h1, h2, h3 {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.08;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+      margin: auto;
+      padding: 0 22px;
+    }
+
+
+    /* =========================================================
+       FIXED NAVIGATION
+    ========================================================= */
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: #0B1117;
+      padding: 12px 0;
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 32px;
+      width: auto;
+      display: block;
+    }
+
+    .nav-button {
+      background: white;
+      color: var(--black);
+      padding: 9px 15px;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 700;
+      transition: 0.2s;
+    }
+
+    .nav-button:hover {
+      background: #e0e0e0;
+    }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 22px;
+      color: #DCE6EA;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .nav-links a {
+      padding: 4px 0;
+      border-bottom: 2px solid transparent;
+    }
+
+    .nav-links a.current,
+    .nav-links a:hover {
+      color: white;
+      border-bottom-color: #8CB8CC;
+    }
+
+    .nav-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      background: transparent;
+      border: 1px solid #52616B;
+      border-radius: 8px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .nav-mobile-menu {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      padding: 14px 0 6px;
+    }
+
+    .nav-mobile-menu.open {
+      display: flex;
+    }
+
+    .nav-mobile-menu a {
+      color: #DCE6EA;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 10px 4px;
+      border-bottom: 1px solid #1B2832;
+    }
+
+    .nav-mobile-menu a.current {
+      color: #8CB8CC;
+    }
+
+    @media (min-width: 768px) {
+
+      .nav-links {
+        display: flex;
+      }
+
+      .nav-toggle {
+        display: none;
+      }
+
+      .nav-mobile-menu {
+        display: none !important;
+      }
+
+    }
+
+
+    /* =========================================================
+       HERO
+    ========================================================= */
+
+    .hero {
+      background: var(--black);
+      color: white;
+      padding: 70px 0 55px;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-label {
+      color: #DCE6EA;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 25px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 10vw, 56px);
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 span {
+      color: #8CB8CC;
+    }
+
+    .weekly {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      background: var(--blue);
+      color: white;
+      padding: 11px 16px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 30px;
+    }
+
+    .weekly-dot {
+      width: 8px;
+      height: 8px;
+      background: white;
+      border-radius: 50%;
+    }
+
+    .hero-description {
+      color: #DCE6EA;
+      font-size: 16px;
+      max-width: 480px;
+      margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .primary-button {
+      background: white;
+      color: var(--black);
+      padding: 15px 20px;
+      border-radius: 30px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 800;
+      transition: 0.2s;
+    }
+
+    .primary-button:hover {
+      background: #f0f0f0;
+    }
+
+    .secondary-button {
+      border: 1px solid #52616B;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 30px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .hero-photo {
+      margin-top: 40px;
+      width: 100%;
+      height: 700px;
+      border-radius: 24px;
+      overflow: hidden;
+      position: relative;
+      background: #0B1117;
+    }
+
+    .hero-video-bg {
+      position: absolute !important;
+      inset: -30px;
+      width: calc(100% + 60px) !important;
+      height: calc(100% + 60px) !important;
+      object-fit: cover !important;
+      filter: blur(30px);
+      transform: scale(1.1);
+      opacity: 0.5;
+      z-index: 0;
+    }
+
+    .hero-photo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(11, 17, 23, 0.35);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-video-main {
+      position: relative !important;
+      z-index: 2;
+      display: block;
+      width: auto !important;
+      height: 100% !important;
+      max-width: 100%;
+      margin: auto;
+      object-fit: contain !important;
+    }
+
+    #unmuteBtn {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      z-index: 10;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    #unmuteBtn:hover {
+      background: rgba(0, 0, 0, 0.9);
+      transform: scale(1.08);
+    }
+    /* =========================================================
+   WHAT IS TOASTMASTERS?
+========================================================= */
+
+.about-toastmasters {
+  background: var(--offwhite);
+  padding: 55px 0 60px;
+  border-bottom: 1px solid var(--softblue);
+}
+
+.about-toastmasters .about-label {
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.about-toastmasters h2 {
+  color: var(--black);
+  font-size: 38px;
+  letter-spacing: -1.8px;
+  margin-bottom: 20px;
+}
+
+.about-toastmasters p {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.65;
+  max-width: 850px;
+}
+
+.about-toastmasters .about-highlight {
+  margin-top: 14px;
+  color: var(--black);
+}
+
+.about-toastmasters strong {
+  color: var(--blue);
+  font-weight: 800;
+}
+
+.about-toastmasters .about-divider {
+  width: 45px;
+  height: 2px;
+  background: var(--blue);
+  margin-top: 28px;
+}
+
+@media (max-width: 767px) {
+
+  .about-toastmasters {
+    padding: 50px 0 55px;
+  }
+
+  .about-toastmasters h2 {
+    font-size: 32px;
+  }
+
+  .about-toastmasters p {
+    font-size: 14px;
+  }
+
+}
+
+
+    /* =========================================================
+       WHY TOASTMASTERS?
+    ========================================================= */
+
+    .why-section {
+      background: var(--blue);
+      color: white;
+      padding: 75px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .why-section .section-label {
+      color: #DCE6EA;
+    }
+
+    .why-section .section-title {
+      color: white;
+    }
+
+    .why-section .section-description {
+      color: #DCE6EA;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 22px;
+      margin-top: 40px;
+    }
+
+ .why-card {
+    position: relative;
+    height: 315px;
+
+    border-radius: 24px;
+    overflow: hidden;
+
+    border: 1px solid rgba(255,255,255,0.10);
+
+    background: #05283D;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.3s ease;
+}
+
+.why-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 32px rgba(0,0,0,0.30);
+}
+
+
+/* FULL BACKGROUND IMAGE */
+
+.why-card img {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    z-index: 0;
+
+    transition: transform 0.4s ease;
+}
+
+
+/* SLIGHT IMAGE ZOOM ON HOVER */
+
+.why-card:hover img {
+    transform: scale(1.04);
+}
+
+
+/* DARK TRANSPARENT GRADIENT
+   SO TEXT IS EASY TO READ
+   BUT IMAGE REMAINS VISIBLE */
+
+.why-card::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(5, 12, 18, 0.92) 0%,
+            rgba(5, 12, 18, 0.72) 28%,
+            rgba(5, 12, 18, 0.20) 62%,
+            rgba(5, 12, 18, 0.00) 100%
+        );
+
+    pointer-events: none;
+}
+
+
+/* CAPTION OVER THE IMAGE */
+
+.why-card-content {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    z-index: 2;
+
+    padding: 28px 24px 25px;
+
+    color: white;
+}
+
+.why-card-content h3 {
+    font-size: 22px;
+
+    letter-spacing: -0.4px;
+
+    margin-bottom: 7px;
+
+    color: white;
+}
+
+.why-card-content p {
+    color: #DCE6EA;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+    max-width: 500px;
+}
+    .why-card-content h3 {
+      font-size: 20px;
+      letter-spacing: -0.3px;
+      margin-bottom: 6px;
+      color: white;
+    }
+
+    .why-card-content p {
+      color: #DCE6EA;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .why-cta {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .why-cta .primary-button {
+      display: inline-block;
+      padding: 14px 36px;
+      background: white;
+      color: var(--blue);
+      font-weight: 800;
+    }
+
+    .why-cta .primary-button:hover {
+      background: #f0f0f0;
+    }
+
+
+    /* =========================================================
+       QUIZ
+    ========================================================= */
+
+    .quiz-section {
+      background: var(--offwhite);
+      padding: 70px 0;
+    }
+
+    .section-label {
+      color: var(--blue);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    }
+
+    .section-title {
+      font-size: 38px;
+      letter-spacing: -1.8px;
+      margin-bottom: 15px;
+    }
+
+    .section-description {
+      color: var(--muted);
+      font-size: 15px;
+      margin-bottom: 30px;
+    }
+
+    .quiz-box {
+      background: white;
+      padding: 25px;
+      border-radius: 20px;
+      border: 1px solid var(--softblue);
+    }
+
+    .quiz-progress {
+      font-size: 11px;
+      color: var(--blue);
+      font-weight: 800;
+      margin-bottom: 25px;
+    }
+
+    .quiz-question {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 22px;
+    }
+
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .quiz-option {
+      background: white;
+      border: 1px solid #B8C8CE;
+      padding: 15px;
+      border-radius: 12px;
+      text-align: left;
+      cursor: pointer;
+      font-size: 14px;
+      color: var(--black);
+      transition: 0.2s;
+    }
+
+    .quiz-option:hover {
+      border-color: var(--blue);
+    }
+
+    .quiz-option.selected {
+      background: var(--blue);
+      color: white;
+      border-color: var(--blue);
+    }
+
+    .quiz-next {
+      width: 100%;
+      margin-top: 18px;
+      padding: 14px;
+      border: none;
+      border-radius: 30px;
+      background: var(--blue);
+      color: white;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .quiz-next:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .quiz-result {
+      background: var(--blue);
+      color: white;
+      padding: 30px;
+      border-radius: 20px;
+    }
+
+    .quiz-result h3 {
+      font-size: 28px;
+      margin: 10px 0;
+    }
+
+    .quiz-result p {
+      color: #DCE6EA;
+    }
+
+
+    /* =========================================================
+       WHAT HAPPENS HERE
+    ========================================================= */
+
+    .happens-section {
+      background: var(--blue);
+      color: white;
+      padding: 75px 0;
+    }
+
+    .happens-section .section-label {
+      color: #DCE6EA;
+    }
+
+    .happens-section .section-title {
+      color: white;
+    }
+
+    .happens-section .section-description {
+      color: #DCE6EA;
+    }
+
+    .happens-grid {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    .happens-card {
+      position: relative;
+      height: 320px;
+      border-radius: 20px;
+      overflow: hidden;
+      isolation: isolate;
+      background: #05283D;
+    }
+
+    .happens-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .happens-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(11,17,23,0.05) 28%,
+        rgba(11,17,23,0.94) 100%
+      );
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .happens-card-content {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 2;
+      padding: 24px;
+    }
+
+    .happens-number {
+      color: #8CB8CC;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+    }
+
+    .happens-card-content h3 {
+      color: white;
+      font-size: 24px;
+      letter-spacing: -0.6px;
+      margin: 8px 0 8px;
+    }
+
+    .happens-card-content p {
+      color: #DCE6EA;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    @media (hover: hover) {
+      .happens-card:hover img {
+        transform: scale(1.06);
+      }
+    }
+
+
+    /* =========================================================
+       FLASHCARDS
+    ========================================================= */
+/* =========================================================
+   TOASTMASTERS MOMENTS
+========================================================= */
+
+.moments-section {
+    background: var(--black);
+    padding: 75px 0 85px;
+    overflow: hidden;
+}
+
+.moments-section .section-label {
+    color: #8CB8CC;
+}
+
+.moments-intro {
+    margin-bottom: 35px;
+}
+
+.moments-intro h2 {
+    color: white;
+    font-size: 40px;
+    letter-spacing: -2px;
+    margin-bottom: 18px;
+}
+
+.moments-intro p {
+    color: #DCE6EA;
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 600px;
+}
+
+
+/* =========================================================
+   SWIPEABLE PHOTO ROW
+========================================================= */
+
+.moments-gallery {
+    display: flex;
+    gap: 16px;
+
+    overflow-x: auto;
+
+    padding: 5px 0 15px;
+
+    scroll-snap-type: x mandatory;
+
+    -webkit-overflow-scrolling: touch;
+
+    scrollbar-width: none;
+}
+
+.moments-gallery::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* =========================================================
+   PHOTO
+========================================================= */
+.moment-photo {
+    flex: 0 0 82%;
+    height: 330px;
+
+    border-radius: 20px;
+    overflow: hidden;
+
+    background: #1B2832;
+
+    scroll-snap-align: start;
+
+    position: relative;
+}
+
+
+/* IMAGE */
+
+.moment-photo img {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition: transform 0.4s ease;
+}
+
+
+/* DARK GRADIENT AT BOTTOM */
+
+.moment-photo::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background: linear-gradient(
+        to top,
+        rgba(5, 12, 18, 0.95) 0%,
+        rgba(5, 12, 18, 0.70) 25%,
+        rgba(5, 12, 18, 0.15) 60%,
+        rgba(5, 12, 18, 0) 100%
+    );
+
+    z-index: 1;
+
+    pointer-events: none;
+}
+
+
+/* CAPTION */
+
+.moment-caption {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    z-index: 2;
+
+    padding: 28px 24px 24px;
+
+    color: white;
+}
+
+
+.moment-caption h3 {
+    color: white;
+
+    font-size: 22px;
+
+    line-height: 1.15;
+
+    letter-spacing: -0.5px;
+
+    margin-bottom: 7px;
+}
+
+
+.moment-caption p {
+    color: #DCE6EA;
+
+    font-size: 14px;
+
+    line-height: 1.45;
+
+    margin: 0;
+}
+
+
+/* IMAGE HOVER */
+
+@media (hover: hover) {
+
+    .moment-photo:hover img {
+        transform: scale(1.04);
+    }
+
+}
+
+.moment-photo img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+}
+
+
+/* =========================================================
+   DESKTOP
+========================================================= */
+@media (min-width: 768px) {
+
+    .moments-gallery {
+        gap: 20px;
+        overflow-x: auto;
+        cursor: grab;
+        padding-bottom: 18px;
+        scrollbar-width: thin;
+    }
+
+    .moments-gallery:active {
+        cursor: grabbing;
+    }
+
+    .moment-photo {
+        flex: 0 0 300px;
+        height: 380px;
+    }
+
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .moments-section {
+        padding: 65px 0 70px;
+    }
+
+    .moments-intro h2 {
+        font-size: 32px;
+    }
+
+    .moment-photo {
+        flex: 0 0 84%;
+        height: 290px;
+        border-radius: 16px;
+    }
+
+}
+
+    /* =========================================================
+       MEMBER STORIES
+    ========================================================= */
+
+    .stories-section {
+      background: var(--blue);
+      padding: 75px 0;
+    }
+
+    .stories-section .section-label {
+      color: #8CB8CC;
+    }
+
+    .stories-section .section-title {
+      color: white;
+    }
+
+    .stories-section .section-description {
+      color: #DCE6EA;
+    }
+
+    .story {
+      margin-top: 45px;
+      border-radius: 20px;
+      overflow: hidden;
+      background: var(--offwhite);
+      border: 1px solid var(--softblue);
+    }
+
+    .stories-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .story-photo {
+      width: 100%;
+      height: 400px;
+      background: #DCE6EA;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--blue);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      overflow: hidden;
+    }
+
+    .story-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .story-quote {
+      padding: 20px 20px 25px;
+    }
+
+    .story-quote blockquote {
+      font-size: 25px;
+      font-weight: 700;
+      line-height: 1.25;
+      letter-spacing: -0.5px;
+    }
+
+    .story-name {
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 800;
+      margin-top: 14px;
+    }
+
+
+    /* =========================================================
+   BEYOND THE CLUB
+========================================================= */
+
+.beyond-section {
+  background: var(--black);
+  color: white;
+  padding: 75px 0 90px;
+  overflow: hidden;
+}
+
+.beyond-intro {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.beyond-intro .section-label {
+  color: #8CB8CC;
+  margin-bottom: 14px;
+}
+
+.beyond-intro h2 {
+  color: white;
+  font-size: 30px;
+  line-height: 1.15;
+  letter-spacing: -1.2px;
+  margin-bottom: 12px;
+}
+
+.beyond-intro p {
+  color: #DCE6EA;
+  font-size: 13px;
+  line-height: 1.5;
+  max-width: 650px;
+}
+
+
+/* HIERARCHY */
+
+.hierarchy {
+  position: relative;
+  margin: 48px auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/* Each level */
+
+.hierarchy-level {
+  position: relative;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 18px 0 24px;
+
+  color: white;
+}
+
+
+/* Progressive shrinking */
+
+.hierarchy-international {
+  width: 72%;
+}
+
+.hierarchy-district {
+  width: 56%;
+}
+
+.hierarchy-division {
+  width: 42%;
+}
+
+.hierarchy-area {
+  width: 30%;
+}
+
+.hierarchy-club {
+  width: 24%;
+  min-width: 210px;
+}
+
+
+/* Thin horizontal editorial line */
+
+.hierarchy-line {
+  width: 100%;
+  height: 1px;
+  background: #4384a0;
+  margin-bottom: 13px;
+}
+
+
+/* Typography */
+
+.hierarchy-level h3 {
+  font-size: 13px;
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: -0.2px;
+  color: white;
+  white-space: nowrap;
+}
+
+.hierarchy-level p {
+  margin-top: 6px;
+  font-size: 10px;
+  line-height: 1.4;
+  color: #8CB8CC;
+}
+
+
+/* Connector between levels */
+
+.hierarchy-level:not(:last-child)::after {
+  content: "";
+  position: absolute;
+
+  bottom: 0;
+
+  width: 1px;
+  height: 24px;
+
+  background: rgba(140, 184, 204, 0.28);
+}
+
+
+/* Final club gets strongest emphasis */
+
+.hierarchy-club {
+  padding-top: 22px;
+}
+
+.hierarchy-club .hierarchy-line {
+  height: 2px;
+  background: #8CB8CC;
+}
+
+.hierarchy-club h3 {
+  font-size: 14px;
+  letter-spacing: 0.1px;
+}
+
+.hierarchy-club p {
+  color: #DCE6EA;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 767px) {
+
+  .beyond-section {
+    padding: 65px 0 75px;
+  }
+
+  .beyond-intro h2 {
+    font-size: 27px;
+  }
+
+  .beyond-intro p {
+    font-size: 13px;
+  }
+
+  .hierarchy {
+    margin-top: 40px;
+  }
+
+  .hierarchy-international {
+    width: 92%;
+  }
+
+  .hierarchy-district {
+    width: 75%;
+  }
+
+  .hierarchy-division {
+    width: 60%;
+  }
+
+  .hierarchy-area {
+    width: 45%;
+  }
+
+  .hierarchy-club {
+    width: 72%;
+    min-width: 0;
+  }
+
+  .hierarchy-level h3 {
+    font-size: 11px;
+  }
+
+  .hierarchy-club h3 {
+    font-size: 12px;
+  }
+
+}
+
+
+/* DESKTOP */
+
+@media (min-width: 768px) {
+
+  .beyond-intro h2 {
+    font-size: 32px;
+  }
+
+  .hierarchy-level h3 {
+    font-size: 14px;
+  }
+
+  .hierarchy-club h3 {
+    font-size: 15px;
+  }
+
+}
+
+    /* =========================================================
+       LOOKING FOR A DIFFERENT CLUB?
+    ========================================================= */
+
+    .club-finder-section {
+      background: white;
+      padding: 80px 0 85px;
+      border-top: 1px solid var(--softblue);
+      border-bottom: 1px solid var(--softblue);
+    }
+
+    .club-finder-intro {
+      max-width: 650px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .club-finder-intro .section-label {
+      color: var(--blue);
+      margin-bottom: 12px;
+    }
+
+    .club-finder-intro h2 {
+      font-size: 34px;
+      letter-spacing: -1.5px;
+      margin-bottom: 12px;
+      color: var(--black);
+    }
+
+    .club-finder-intro p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .club-filters {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 30px auto 25px;
+    }
+
+    .club-filter {
+      border: 1px solid #C9D4D8;
+      background: white;
+      color: var(--black);
+      padding: 9px 17px;
+      border-radius: 30px;
+      font-size: 11px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .club-filter:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+    }
+
+    .club-filter.active {
+      background: var(--blue);
+      color: white;
+      border-color: var(--blue);
+    }
+
+    .club-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      max-width: 760px;
+      margin: 0 auto;
+      min-height: 100px;
+      align-content: flex-start;
+    }
+
+    .club-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #F7F6F2;
+      border: 1px solid #DCE6EA;
+      color: var(--black);
+      padding: 11px 16px;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.3;
+      text-align: center;
+      transition: all 0.2s ease;
+      animation: clubAppear 0.25s ease both;
+    }
+
+    .club-pill:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+      transform: translateY(-2px);
+    }
+
+    @keyframes clubAppear {
+      from {
+        opacity: 0;
+        transform: translateY(5px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .club-finder-button-wrap {
+      text-align: center;
+      margin-top: 32px;
+    }
+
+    .club-finder-button {
+      display: inline-block;
+      width: 100%;
+      max-width: 560px;
+      background: var(--blue);
+      color: white;
+      padding: 14px 22px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: 800;
+      transition: 0.2s ease;
+    }
+
+    .club-finder-button:hover {
+      background: #003650;
+      transform: translateY(-1px);
+    }
+
+    .club-note {
+      text-align: center;
+      color: var(--muted);
+      font-size: 11px;
+      margin-top: 13px;
+    }
+
+
+    /* =========================================================
+       FINAL CTA
+    ========================================================= */
+
+    .final-cta {
+      background: var(--blue);
+      color: white;
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    .final-cta h2 {
+      font-size: 43px;
+      letter-spacing: -2px;
+      margin-bottom: 15px;
+    }
+
+    .final-cta p {
+      color: #DCE6EA;
+      font-size: 15px;
+      margin-bottom: 30px;
+    }
+
+    .final-button {
+      display: inline-block;
+      background: white;
+      color: var(--black);
+      padding: 16px 28px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 800;
+      transition: 0.2s;
+    }
+
+    .final-button:hover {
+      background: #f0f0f0;
+    }
+
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    footer {
+      background: var(--black);
+      color: #DCE6EA;
+      padding: 30px 0;
+    }
+
+    .footer-title {
+      color: white;
+      font-weight: 800;
+      font-size: 15px;
+    }
+
+    .footer-text {
+      font-size: 12px;
+      margin-top: 8px;
+    }
+
+    .footer-instagram {
+      display: inline-block;
+      margin-top: 14px;
+      color: #8CB8CC;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .footer-logo img {
+      height: 26px;
+      width: auto;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+
+    /* =========================================================
+       FLOATING LINKS
+    ========================================================= */
+
+    .floating-links {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .float-btn {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    }
+
+    .float-btn.whatsapp {
+      background: #25D366;
+    }
+
+    .float-btn.instagram {
+      background: linear-gradient(
+        45deg,
+        #f09433,
+        #e6683c,
+        #dc2743,
+        #cc2366,
+        #bc1888
+      );
+    }
+
+
+    /* =========================================================
+       DESKTOP
+    ========================================================= */
+
+    @media (min-width: 768px) {
+
+      .container {
+        max-width: 900px;
+      }
+
+      .hero-buttons {
+        flex-direction: row;
+      }
+
+      .hero {
+        min-height: 85vh;
+      }
+
+      .hero-photo {
+        margin-top: 40px;
+        height: 700px;
+      }
+
+      .happens-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 22px;
+      }
+
+      .happens-card {
+        height: 380px;
+      }
+
+     
+
+      .stories-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .stories-grid .story {
+        margin-top: 0;
+      }
+
+      .stories-grid .story-photo {
+        height: 280px;
+      }
+
+      .stories-grid .story-quote blockquote {
+        font-size: 16px;
+      }
+
+      .story-photo {
+        height: 500px;
+      }
+
+      .why-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .club-finder-intro h2 {
+        font-size: 42px;
+      }
+
+      .club-finder-button {
+        max-width: 560px;
+      }
+
+    }
+
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 767px) {
+
+      .beyond-section {
+        padding: 70px 0 80px;
+      }
+
+      .beyond-intro {
+        margin-bottom: 48px;
+      }
+
+      .beyond-intro h2 {
+        font-size: 34px;
+      }
+
+      .hierarchy-level {
+        height: 62px;
+        font-size: 9px;
+        letter-spacing: 1.4px;
+      }
+
+      .hierarchy-international {
+        width: 100%;
+      }
+
+      .hierarchy-district {
+        width: 82%;
+      }
+
+      .hierarchy-division {
+        width: 65%;
+      }
+
+      .hierarchy-area {
+        width: 48%;
+      }
+
+      .hierarchy-club {
+        width: 70%;
+        min-width: 0;
+        font-size: 10px;
+      }
+
+      .club-finder-section {
+        padding: 65px 0 70px;
+      }
+
+      .club-finder-intro h2 {
+        font-size: 31px;
+      }
+
+      .club-pill {
+        font-size: 11px;
+        padding: 10px 13px;
+      }
+
+    }
+
+
+    html,
+    body {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img,
+    video,
+    iframe {
+      max-width: 100%;
+    }
+    /* =========================================================
+   MOMENTS GALLERY - DESKTOP SCROLL
+========================================================= */
+
+@media (min-width: 768px) {
+
+    .moments-gallery {
+        overflow-x: auto;
+        cursor: grab;
+        padding-bottom: 18px;
+        scrollbar-width: thin;
+    }
+
+    .moments-gallery:active {
+        cursor: grabbing;
+    }
+
+    .moment-photo {
+        flex: 0 0 300px;
+    }
+
+}
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAV
+===================================================== -->
+
+<nav>
+
+  <div class="container nav-inner">
+
+    <div class="logo">
+     <img src="logo.jpg" alt="Anurag Toastmasters Logo">
+    </div>
+
+    <div class="nav-links">
+
+      <a href="index.html" class="current">Home</a>
+
+      <a href="agenda.html">Agenda</a>
+
+      <a href="resources.html">Resources</a>
+
+    </div>
+
+    <div style="display:flex; align-items:center; gap:10px;">
+
+      <a
+        href="https://forms.gle/u5iXz8gvccPTfWBy9"
+        class="nav-button"
+      >
+        Visit Us
+      </a>
+
+      <button
+        class="nav-toggle"
+        id="navToggle"
+        type="button"
+        aria-label="Menu"
+      >
+        ☰
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div class="container">
+
+    <div class="nav-mobile-menu" id="navMobileMenu">
+
+      <a href="index.html" class="current">Home</a>
+
+      <a href="agenda.html">Agenda</a>
+
+      <a href="resources.html">Resources</a>
+
+    </div>
+
+  </div>
+
+</nav>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+  <div class="container">
+
+    <div class="hero-label">
+      ANURAG Toastmasters Club
+    </div>
+
+    <div class="weekly">
+      <span class="weekly-dot"></span>
+      WE MEET EVERY WEEK
+    </div>
+
+    <h1>
+      CONFIDENCE.<br>
+      <span>COMMUNICATION.</span><br>
+      PUBLIC SPEAKING.<br>
+      LEADERSHIP.<br>
+      NETWORKING.
+    </h1>
+
+    <p class="hero-description">
+      You don't learn these skills by watching someone else do it.
+      You build them by stepping up, speaking out, getting feedback,
+      and doing it again.
+    </p>
+
+    <div class="hero-buttons">
+
+      <a href="#visit" class="primary-button">
+        Visit as a Guest →
+      </a>
+
+      <a href="#quiz" class="secondary-button">
+        Take the 1-Minute Quiz
+      </a>
+
+    </div>
+
+    <div class="hero-photo">
+
+      <!--<video
+        class="hero-video-bg"
+        src="Video01.mp4"
+        autoplay
+        muted
+        loop
+        playsinline>
+      </video> -->
+
+      <video
+        id="heroVid"
+        class="hero-video-main"
+        src="Video02.mp4"
+        autoplay
+        muted
+        loop
+        playsinline>
+      </video>
+
+      <button id="unmuteBtn" type="button">
+        🔇
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- =====================================================
+     WHAT IS TOASTMASTERS?
+===================================================== -->
+
+<section class="about-toastmasters">
+
+  <div class="container">
+
+    <div class="about-label">
+      THE ORGANIZATION
+    </div>
+
+    <h2>
+      What is Toastmasters?
+    </h2>
+
+    <p>
+      Toastmasters International is a global educational organization
+      that teaches public speaking and leadership skills through a
+      worldwide network of clubs.
+    </p>
+
+    <p class="about-highlight">
+      With <strong>364K+ members</strong> across
+      <strong>16,200+ clubs</strong> in
+      <strong>145 countries</strong>, Toastmasters has a presence
+      in corporate organizations, universities, and colleges around
+      the world.
+    </p>
+
+    <div class="about-divider"></div>
+
+  </div>
+
+</section>
+
+
+
+
+<!-- =====================================================
+     WHY TOASTMASTERS?
+===================================================== -->
+
+<section class="why-section" id="why">
+
+  <div class="container">
+
+    <div class="section-label">
+      WHY TOASTMASTERS?
+    </div>
+
+    <h2 class="section-title">
+      Why do thousands of students join?
+    </h2>
+
+    <p class="section-description">
+      Because it's not just about speaking — it's about becoming
+      the person you want to be.
+    </p>
+
+    <div class="why-grid">
+
+      <div class="why-card">
+
+        <img
+          src="vspeech.jpeg"
+          alt="Speak with confidence"
+        >
+
+        <div class="why-card-content">
+
+          <h3>
+            Speak with confidence
+          </h3>
+
+          <p>
+            From classroom presentations to interviews.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="why-card">
+
+        <img
+          src="speech5.jpeg"
+          alt="Compete beyond campus"
+        >
+
+        <div class="why-card-content">
+
+          <h3>
+            Compete beyond campus
+          </h3>
+
+          <p>
+            Represent your club in speech contests.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="why-card">
+
+        <img
+          src="unmuted1.jpeg"
+          alt="Lead real events"
+        >
+
+        <div class="why-card-content">
+
+          <h3>
+            Lead real events
+          </h3>
+
+          <p>
+            Anchor, organize and host college events.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="why-card">
+
+        <img
+          src="girls.jpeg"
+          alt="Build lifelong connections"
+        >
+
+        <div class="why-card-content">
+
+          <h3>
+            Build lifelong connections
+          </h3>
+
+          <p>
+            Meet ambitious people from different backgrounds.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="why-cta">
+
+      <a href="#visit" class="primary-button">
+        Ready to experience this?
+        <span style="display:inline-block;margin-left:6px;">
+          →
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     QUIZ
+===================================================== -->
+
+<section class="quiz-section" id="quiz">
+
+  <div class="container">
+
+    <div class="section-label">
+      QUICK CHECK-IN
+    </div>
+
+    <h2 class="section-title">
+      Where are you right now?
+    </h2>
+
+    <p class="section-description">
+      Answer four quick questions and see where Toastmasters
+      could help you grow.
+    </p>
+
+    <div class="quiz-box" id="quizBox">
+
+      <div class="quiz-progress" id="quizProgress">
+        QUESTION 1 OF 4
+      </div>
+
+      <div class="quiz-question" id="quizQuestion"></div>
+
+      <div class="quiz-options" id="quizOptions"></div>
+
+      <button
+        class="quiz-next"
+        id="quizNext"
+        disabled
+      >
+        Next →
+      </button>
+
+    </div>
+
+    <div
+      class="quiz-result"
+      id="quizResult"
+      style="display:none;"
+    ></div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     SKILLS / FLASHCARDS
+===================================================== -->
+
+<!-- =====================================================
+     TOASTMASTERS MOMENTS
+===================================================== -->
+
+<section class="moments-section">
+
+<div class="container">
+
+    <div class="moments-intro">
+
+        <div class="section-label">
+            TOASTMASTERS IN ACTION
+        </div>
+
+        <h2>
+            See it in action.
+        </h2>
+
+        <p>
+            A glimpse of the people, moments, and experiences
+            that make Anurag Toastmasters what it is.
+        </p>
+
+    </div>
+
+<div class="moments-gallery">
+
+    <!-- PHOTO 1 — Audience raising hands -->
+    <div class="moment-photo">
+        <img
+            src="img4.jpeg"
+            alt="Audience participating"
+            loading="lazy">
+
+        <div class="moment-caption">
+            <h3>Speak with confidence</h3>
+            <p>From classroom presentations to real conversations.</p>
+        </div>
+    </div>
+
+
+    <!-- PHOTO 2 — Awards -->
+    <div class="moment-photo">
+        <img
+            src="award.jpeg"
+            alt="Toastmasters awards"
+            loading="lazy">
+
+        <div class="moment-caption">
+            <h3>Achieve beyond expectations</h3>
+            <p>Compete, improve, and bring home the win.</p>
+        </div>
+    </div>
+
+
+    <!-- PHOTO 3 — Person on stage -->
+    <div class="moment-photo">
+        <img
+            src="speech3.jpg"
+            alt="Toastmasters speaker on stage"
+            loading="lazy">
+
+        <div class="moment-caption">
+            <h3>Own the stage</h3>
+            <p>Speak boldly and make your voice heard.</p>
+        </div>
+    </div>
+
+
+    <!-- PHOTO 4 — Leading a team -->
+    <div class="moment-photo">
+        <img
+            src="img3.jpg"
+            alt="Toastmasters leadership"
+            loading="lazy">
+
+        <div class="moment-caption">
+            <h3>Lead with confidence</h3>
+            <p>Build leadership skills that go beyond the club.</p>
+        </div>
+    </div>
+
+
+    <!-- PHOTO 5 — Networking -->
+    <div class="moment-photo">
+        <img
+            src="card4.jpeg"
+            alt="Toastmasters networking"
+            loading="lazy">
+
+        <div class="moment-caption">
+            <h3>Build lifelong connections</h3>
+            <p>Meet ambitious people and grow together.</p>
+        </div>
+    </div>
+
+
+    <!-- PHOTO 6 — Community -->
+    <div class="moment-photo">
+        <img
+            src="card2.jpeg"
+            alt="Toastmasters community"
+            loading="lazy">
+
+        <div class="moment-caption">
+            <h3>Grow together</h3>
+            <p>Learn, connect, and become better together.</p>
+        </div>
+    </div>
+
+</div>
+</div>
+
+</section>
+
+<!-- =====================================================
+     MEMBER STORIES
+===================================================== -->
+
+<section class="stories-section" id="stories">
+
+  <div class="container">
+
+    <div class="section-label">
+      MEMBER STORIES
+    </div>
+
+    <h2 class="section-title">
+      Don't take our word for it.
+    </h2>
+
+    <p class="section-description">
+      See what people who actually joined have to say.
+    </p>
+
+
+    <div class="stories-grid">
+
+
+      <div class="story">
+
+        <div class="story-photo">
+          <img
+            src="bhav.jpg"
+            alt="Member 1"
+          >
+        </div>
+
+        <div class="story-quote">
+
+          <blockquote>
+            "I never saw myself as a leader before joining Toastmasters. Now I actually volunteer to lead things"
+          </blockquote>
+
+          <div class="story-name">
+            TM BHAYVA • CSE / 3RD YEAR
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="story">
+
+        <div class="story-photo">
+          <img
+            src="shr.jpg"
+            alt="Member 2"
+          >
+        </div>
+
+        <div class="story-quote">
+
+          <blockquote>
+            "I realised that confidence isn’t about never being nervous; it’s about speaking even when you are."
+          </blockquote>
+
+          <div class="story-name">
+            TM SHRITHA • CSE / 3RD YEAR
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="story">
+
+        <div class="story-photo">
+          <img
+            src="jacc.jpeg"
+            alt="Member 3"
+          >
+        </div>
+
+        <div class="story-quote">
+
+          <blockquote>
+            "Toastmasters made me realise that my words can motivate people, can make people laugh, can create an impact."
+          </blockquote>
+
+          <div class="story-name">
+            TM JACKAB • CSE / 2ND YEAR
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="story">
+
+        <div class="story-photo">
+          <img
+            src="has.jpeg"
+            alt="Member 4"
+          >
+        </div>
+
+        <div class="story-quote">
+
+          <blockquote>
+            "The biggest shift for me was embracing mistakes and letting them shape and refine my voice."
+          </blockquote>
+
+          <div class="story-name">
+            TM HASINI • DS / 3RD YEAR
+          </div>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     BEYOND THE CLUB
+===================================================== -->
+<section class="beyond-section">
+
+  <div class="container">
+
+    <div class="beyond-intro">
+      <div class="section-label">BEYOND OUR CLUB</div>
+
+      <h2>Your club is part of something much bigger.</h2>
+
+      <p>
+        Anurag Toastmasters is part of a global network that connects
+        clubs, leaders, and speakers.
+      </p>
+    </div>
+
+
+    <div class="hierarchy">
+
+      <!-- INTERNATIONAL -->
+      <div class="hierarchy-level hierarchy-international">
+
+        <div class="hierarchy-line"></div>
+
+        <h3>TOASTMASTERS INTERNATIONAL</h3>
+
+        <p>The global organisation</p>
+
+      </div>
+
+
+      <!-- DISTRICT -->
+      <div class="hierarchy-level hierarchy-district">
+
+        <div class="hierarchy-line"></div>
+
+        <h3>DISTRICT 225</h3>
+
+        <p>A network of clubs working together</p>
+
+      </div>
+
+
+      <!-- DIVISION -->
+      <div class="hierarchy-level hierarchy-division">
+
+        <div class="hierarchy-line"></div>
+
+        <h3>DIVISION G</h3>
+
+        <p>Connecting clubs across the division</p>
+
+      </div>
+
+
+      <!-- AREA -->
+      <div class="hierarchy-level hierarchy-area">
+
+        <div class="hierarchy-line"></div>
+
+        <h3>AREA 1</h3>
+
+        <p>Supporting clubs in the area</p>
+
+      </div>
+
+
+      <!-- CLUB -->
+      <div class="hierarchy-level hierarchy-club">
+
+        <div class="hierarchy-line"></div>
+
+        <h3>ANURAG TOASTMASTERS CLUB</h3>
+
+        <p>Our home club</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     LOOKING FOR A DIFFERENT CLUB?
+===================================================== -->
+
+<section
+  class="club-finder-section"
+  id="different-club"
+>
+
+  <div class="container">
+
+    <div class="club-finder-intro">
+
+      <div class="section-label">
+       
+      </div>
+
+      <h2>
+        There's a Toastmasters community for you.
+      </h2>
+
+      <p>
+        Toastmasters isn't limited to one campus.
+        Tap a type to see clubs around Hyderabad.
+      </p>
+
+    </div>
+
+
+    <!-- CATEGORY FILTERS -->
+
+    <div class="club-filters">
+
+      <button
+        class="club-filter"
+        data-category="college"
+        type="button"
+      >
+        College
+      </button>
+
+      <button
+        class="club-filter active"
+        data-category="corporate"
+        type="button"
+      >
+        Corporate
+      </button>
+
+      <button
+        class="club-filter"
+        data-category="community"
+        type="button"
+      >
+        Community
+      </button>
+
+    </div>
+
+
+    <!-- CLUBS APPEAR HERE -->
+
+    <div
+      class="club-list"
+      id="clubList"
+    ></div>
+
+
+    <div class="club-finder-button-wrap">
+
+      <a
+        href="https://www.toastmasters.org/Find-a-Club"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="club-finder-button"
+      >
+        Explore Toastmasters International →
+      </a>
+
+    </div>
+
+    <p class="club-note">
+      Club availability, meeting schedules and membership requirements
+      may change. Check Toastmasters International before visiting.
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FINAL CTA
+===================================================== -->
+
+<section class="final-cta" id="visit">
+
+  <div class="container">
+
+    <h2>
+      Ready to see what it's like?
+    </h2>
+
+    <p>
+      Come to one of our weekly meetings.
+      You don't have to be a member to visit.
+    </p>
+
+    <a
+      href="https://forms.gle/u5iXz8gvccPTfWBy9"
+      target="_blank"
+      class="final-button"
+    >
+      Visit Anurag Toastmasters as a Guest →
+    </a>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+  <div class="container">
+
+    <div class="footer-logo">
+      
+    </div>
+
+    <div class="footer-title">
+      Anurag Toastmasters Club
+    </div>
+
+    <div class="footer-text">
+      Anurag University • District 225 • Division G • Area 1
+    </div>
+
+    <div
+      class="footer-text"
+      style="margin-top:6px;"
+    >
+      For queries, contact our VPM, TM ANUSHKA:
+      <a
+        href="tel:+918374008301"
+        style="color:#8CB8CC; font-weight:700;"
+      >
+        +91 8374008301
+      </a>
+    </div>
+
+    <a
+      href="https://www.instagram.com/anurag.toastmasters?igsh=cWU3YmJjYXFtaGRv"
+      target="_blank"
+      class="footer-instagram"
+    >
+      Follow us on Instagram →
+    </a>
+
+  </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     FLOATING LINKS
+===================================================== -->
+
+<div class="floating-links">
+
+  <a
+    href="https://chat.whatsapp.com/IYww5osOOqo86K6lhRHre8"
+    target="_blank"
+    class="float-btn whatsapp"
+    title="Join our WhatsApp group"
+    aria-label="WhatsApp"
+  >
+
+    <svg
+      viewBox="0 0 24 24"
+      width="24"
+      height="24"
+      fill="white"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+
+      <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.87.5 3.62 1.44 5.14L2 22l5.09-1.53a9.87 9.87 0 0 0 4.95 1.34h.01c5.46 0 9.9-4.45 9.9-9.91C21.95 6.45 17.5 2 12.04 2zm5.72 14.13c-.24.68-1.4 1.3-1.93 1.35-.5.05-1.02.24-3.43-.72-2.9-1.16-4.77-4.13-4.91-4.32-.14-.19-1.17-1.56-1.17-2.98 0-1.41.74-2.1 1-2.39.26-.28.57-.35.76-.35.19 0 .38 0 .55.01.18.01.42-.07.65.5.24.58.82 2 .89 2.14.07.14.12.31.02.5-.1.19-.15.31-.3.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.02 1.12.99 2.06 1.3 2.35 1.45.29.14.46.12.63-.07.17-.19.72-.84.91-1.13.19-.29.38-.24.63-.14.26.1 1.66.78 1.94.93.28.14.47.21.54.33.07.12.07.7-.17 1.38z"/>
+
+    </svg>
+
+  </a>
+
+
+  <a
+    href="https://www.instagram.com/anurag.toastmasters?igsh=cWU3YmJjYXFtaGRv"
+    target="_blank"
+    class="float-btn instagram"
+    title="Follow us on Instagram"
+    aria-label="Instagram"
+  >
+
+    <svg
+      viewBox="0 0 24 24"
+      width="24"
+      height="24"
+      fill="none"
+      stroke="white"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+
+      <rect
+        x="2"
+        y="2"
+        width="20"
+        height="20"
+        rx="5.5"
+        ry="5.5"
+      />
+
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+
+      <line
+        x1="17.5"
+        y1="6.5"
+        x2="17.51"
+        y2="6.5"
+      />
+
+    </svg>
+
+  </a>
+
+</div>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+     Mobile nav + hero video + quiz + flashcards
+     + club finder
+===================================================== -->
+
+<script>
+
+  (function() {
+
+
+    /* =====================================================
+       MOBILE NAVIGATION
+    ===================================================== */
+
+    const navToggle =
+      document.getElementById("navToggle");
+
+    const navMobileMenu =
+      document.getElementById("navMobileMenu");
+
+    if (navToggle) {
+
+      navToggle.addEventListener("click", function() {
+
+        navMobileMenu.classList.toggle("open");
+
+        navToggle.textContent =
+          navMobileMenu.classList.contains("open")
+            ? "✕"
+            : "☰";
+
+      });
+
+    }
+
+
+    /* =====================================================
+       HERO VIDEO
+    ===================================================== */
+
+    const heroVideo =
+      document.getElementById("heroVid");
+
+    const unmuteButton =
+      document.getElementById("unmuteBtn");
+
+    if (unmuteButton && heroVideo) {
+
+      unmuteButton.addEventListener("click", function() {
+
+        heroVideo.muted =
+          !heroVideo.muted;
+
+        unmuteButton.textContent =
+          heroVideo.muted
+            ? "🔇"
+            : "🔊";
+
+      });
+
+    }
+
+
+    /* =====================================================
+       QUIZ
+    ===================================================== */
+
+    const questions = [
+
+      {
+        question:
+          "How do you feel when you have to speak in front of a crowd?",
+
+        options: [
+          "I'd rather disappear.",
+          "I can do it, but I overthink everything.",
+          "I'm okay once I get started.",
+          "Give me the mic."
+        ]
+      },
+
+      {
+        question:
+          "Someone suddenly asks you to speak without preparation. What do you do?",
+
+        options: [
+          "Panic internally.",
+          "Try to escape.",
+          "I'll give it a shot.",
+          "Let's go."
+        ]
+      },
+
+      {
+        question:
+          "You're asked to anchor a college event tomorrow. Your reaction?",
+
+        options: [
+          "Absolutely not.",
+          "Maybe, if someone does it with me.",
+          "I'll try.",
+          "Hand me the mic."
+        ]
+      },
+
+      {
+        question:
+          "In a group project, you're usually the one who...",
+
+        options: [
+          "Stays quiet and does my part.",
+          "Has ideas but doesn't always speak up.",
+          "Helps keep everyone on track.",
+          "Ends up leading the whole thing."
+        ]
+      }
+
+    ];
+
+
+    let currentQuestion = 0;
+
+    let score = 0;
+
+    let selectedScore = null;
+
+
+    const qEl =
+      document.getElementById("quizQuestion");
+
+    const optsEl =
+      document.getElementById("quizOptions");
+
+    const nextBtn =
+      document.getElementById("quizNext");
+
+    const progEl =
+      document.getElementById("quizProgress");
+
+    const boxEl =
+      document.getElementById("quizBox");
+
+    const resultEl =
+      document.getElementById("quizResult");
+
+
+    function loadQuestion() {
+
+      const q =
+        questions[currentQuestion];
+
+      progEl.innerText =
+        `QUESTION ${currentQuestion + 1} OF ${questions.length}`;
+
+      qEl.innerText =
+        q.question;
+
+      optsEl.innerHTML =
+        "";
+
+      nextBtn.disabled =
+        true;
+
+      selectedScore =
+        null;
+
+
+      q.options.forEach((opt, idx) => {
+
+        const btn =
+          document.createElement("button");
+
+        btn.className =
+          "quiz-option";
+
+        btn.innerText =
+          opt;
+
+        btn.onclick = () => {
+
+          document
+            .querySelectorAll(".quiz-option")
+            .forEach(b =>
+              b.classList.remove("selected")
+            );
+
+          btn.classList.add("selected");
+
+          selectedScore =
+            idx;
+
+          nextBtn.disabled =
+            false;
+
+        };
+
+        optsEl.appendChild(btn);
+
+      });
+
+    }
+
+
+    nextBtn.onclick = () => {
+
+      if (selectedScore === null)
+        return;
+
+      score +=
+        selectedScore;
+
+      if (
+        currentQuestion <
+        questions.length - 1
+      ) {
+
+        currentQuestion++;
+
+        loadQuestion();
+
+      } else {
+
+        showResult();
+
+      }
+
+    };
+
+
+    function showResult() {
+
+      boxEl.style.display =
+        "none";
+
+      resultEl.style.display =
+        "block";
+
+      let title =
+        "";
+
+      if (score <= 3)
+        title =
+          "You're ready to start small.";
+
+      else if (score <= 7)
+        title =
+          "You're closer than you think.";
+
+      else if (score <= 11)
+        title =
+          "You've already got a strong start.";
+
+      else
+        title =
+          "You might be the person who should take the mic.";
+
+
+      resultEl.innerHTML = `
+
+        <div
+          style="
+            font-size:11px;
+            font-weight:800;
+            letter-spacing:2px;
+            color:#8CB8CC;
+          "
+        >
+          YOUR RESULT
+        </div>
+
+        <h3>${title}</h3>
+
+        <p>
+          Wherever you are right now, Toastmasters gives you
+          a place to practise, get feedback, and keep improving.
+        </p>
+
+      `;
+
+    }
+
+
+    loadQuestion();
+
+
+
+    /* =====================================================
+       FLASHCARDS
+    ===================================================== */
+
+
+
+
+    /* =====================================================
+       LOOKING FOR A DIFFERENT CLUB
+       CATEGORY FILTER
+    ===================================================== */
+
+
+    const clubData = {
+
+      college: [
+
+        "Anurag Toastmasters",
+
+        "VNR VJIET Toastmasters Club",
+
+        "Toastmasters CBIT",
+
+        "BVRIT Hyderabad Toastmasters Club",
+
+        "Indian School of Business Toastmasters"
+
+      ],
+
+
+      corporate: [
+
+        "Deloitte Hyderabad Toastmasters Club",
+
+        "TCS Maitree Synergy Park Toastmasters Club",
+
+        "Providence India Toastmasters",
+
+        "Center Stage Toastmasters",
+
+        "Salesforce Hyderabad Toastmasters",
+
+        "Servicenow India Toastmasters Club",
+
+        "Arrise Toastmasters – Hyderabad Chapter"
+
+      ],
+
+
+      community: [
+
+        "Hyderabad Toastmasters",
+
+        "Vision Toastmasters (Community Club)",
+
+        "Madhapur Toastmasters",
+
+        "Secunderabad Toastmasters",
+
+        "BEN's Toastmasters Club",
+
+        "Sattvic Toastmasters For Healthy Living"
+
+      ]
+
+    };
+
+
+    const clubList =
+      document.getElementById("clubList");
+
+    const clubFilters =
+      document.querySelectorAll(".club-filter");
+
+
+    function showClubs(category) {
+
+      clubList.innerHTML =
+        "";
+
+
+      const clubs =
+        clubData[category] || [];
+
+
+      clubs.forEach((club, index) => {
+
+        const clubElement =
+          document.createElement("a");
+
+        clubElement.className =
+          "club-pill";
+
+        clubElement.href =
+          "https://www.toastmasters.org/Find-a-Club";
+
+        clubElement.target =
+          "_blank";
+
+        clubElement.rel =
+          "noopener noreferrer";
+
+        clubElement.textContent =
+          club;
+
+
+        clubElement.style.animationDelay =
+          `${index * 0.035}s`;
+
+
+        clubList.appendChild(
+          clubElement
+        );
+
+      });
+
+    }
+
+
+    clubFilters.forEach(filter => {
+
+      filter.addEventListener(
+        "click",
+        () => {
+
+          clubFilters.forEach(btn => {
+
+            btn.classList.remove(
+              "active"
+            );
+
+          });
+
+
+          filter.classList.add(
+            "active"
+          );
+
+
+          showClubs(
+            filter.dataset.category
+          );
+
+        }
+      );
+
+    });
+
+
+    /* Corporate is shown initially,
+       matching the reference screenshot. */
+
+    showClubs("corporate");
+
+
+  })();
+
+</script>
+
+
+</body>
+
+</html>

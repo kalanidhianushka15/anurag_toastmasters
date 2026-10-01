@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Agenda | Anurag Toastmasters Club</title>
+
+<style>
+
+/* =========================================================
+   RESET + VARIABLES
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --black: #0B1117;
+    --blue: #004165;
+    --offwhite: #F7F6F2;
+    --softblue: #DCE6EA;
+    --white: #FFFFFF;
+    --text: #0B1117;
+    --muted: #52616B;
+    --line: #D5E0E4;
+    --lightblue: #8CB8CC;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--offwhite);
+    color: var(--text);
+    line-height: 1.5;
+    overflow-x: hidden;
+}
+
+h1, h2, h3 {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.08;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font-family: inherit;
+}
+
+.container {
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
+    padding: 0 22px;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    background: rgba(11, 17, 23, 0.96);
+    backdrop-filter: blur(10px);
+
+    padding: 16px 0;
+}
+
+.nav-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 32px;
+    width: auto;
+    display: block;
+}
+
+.nav-button {
+    background: white;
+    color: var(--black);
+
+    padding: 9px 15px;
+    border-radius: 30px;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.nav-links {
+    display: none;
+    align-items: center;
+    gap: 22px;
+
+    color: var(--softblue);
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.nav-links a {
+    padding: 4px 0;
+    border-bottom: 2px solid transparent;
+}
+
+.nav-links a.current,
+.nav-links a:hover {
+    color: white;
+    border-bottom-color: var(--lightblue);
+}
+
+
+/* =========================================================
+   MOBILE MENU BUTTON
+========================================================= */
+
+.nav-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 36px;
+    height: 36px;
+
+    background: transparent;
+    border: 1px solid #52616B;
+    border-radius: 8px;
+
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+.nav-mobile-menu {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+
+    padding: 14px 0 6px;
+}
+
+.nav-mobile-menu.open {
+    display: flex;
+}
+
+.nav-mobile-menu a {
+    color: var(--softblue);
+    font-size: 14px;
+    font-weight: 700;
+
+    padding: 10px 4px;
+
+    border-bottom: 1px solid #1B2832;
+}
+
+.nav-mobile-menu a.current {
+    color: var(--lightblue);
+}
+
+
+/* =========================================================
+   DESKTOP
+========================================================= */
+
+@media (min-width: 768px) {
+
+    .nav-links {
+        display: flex;
+    }
+
+    .nav-toggle {
+        display: none;
+    }
+
+    .nav-mobile-menu {
+        display: none !important;
+    }
+
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.agenda-hero {
+    background: var(--black);
+    color: white;
+
+    padding: 90px 0 85px;
+}
+
+.agenda-label {
+    color: var(--lightblue);
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    margin-bottom: 22px;
+}
+
+.agenda-hero h1 {
+    font-size: clamp(40px, 8vw, 68px);
+
+    letter-spacing: -3px;
+
+    max-width: 700px;
+
+    margin-bottom: 25px;
+
+    font-weight: 700;
+}
+
+.agenda-hero h1 span {
+    color: var(--lightblue);
+}
+
+.agenda-hero p {
+    color: var(--softblue);
+
+    font-size: 16px;
+    line-height: 1.6;
+
+    max-width: 570px;
+}
+
+
+/* =========================================================
+   CALENDAR SECTION
+========================================================= */
+
+.calendar-section {
+    background: var(--offwhite);
+
+    padding: 85px 0 90px;
+}
+
+.calendar-intro {
+    margin-bottom: 38px;
+}
+
+.section-label {
+    color: var(--blue);
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    margin-bottom: 14px;
+}
+
+.calendar-intro h2 {
+    font-size: 40px;
+
+    letter-spacing: -2px;
+
+    margin-bottom: 12px;
+}
+
+.calendar-intro p {
+    color: var(--muted);
+
+    font-size: 15px;
+
+    max-width: 600px;
+}
+
+
+/* =========================================================
+   GOOGLE CALENDAR
+========================================================= */
+
+.calendar-box {
+    background: white;
+
+    border: 1px solid var(--line);
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    box-shadow: 0 12px 35px rgba(11,17,23,0.08);
+
+    min-height: 650px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calendar-box iframe {
+    width: 100%;
+    height: 650px;
+
+    border: 0;
+
+    display: block;
+}
+
+
+/* =========================================================
+   GOT QUESTIONS
+========================================================= */
+
+.questions-section {
+    background: var(--blue);
+
+    color: white;
+
+    padding: 70px 0;
+}
+
+.questions-content {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 40px;
+}
+
+.questions-label {
+    color: var(--lightblue);
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    margin-bottom: 12px;
+}
+
+.questions-content h2 {
+    font-size: 38px;
+
+    letter-spacing: -1.8px;
+
+    margin-bottom: 12px;
+}
+
+.questions-content p {
+    color: var(--softblue);
+
+    font-size: 15px;
+
+    max-width: 560px;
+}
+
+.questions-button {
+    display: inline-block;
+
+    background: white;
+
+    color: var(--blue);
+
+    padding: 14px 22px;
+
+    border-radius: 30px;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    white-space: nowrap;
+
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease;
+}
+
+.questions-button:hover {
+    background: var(--softblue);
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   JOIN US
+========================================================= */
+
+.join-section {
+    background: var(--offwhite);
+
+    padding: 85px 0;
+
+    text-align: center;
+}
+
+.join-section h2 {
+    font-size: clamp(38px, 7vw, 55px);
+
+    letter-spacing: -2.5px;
+
+    margin-bottom: 15px;
+}
+
+.join-section p {
+    color: var(--muted);
+
+    max-width: 520px;
+
+    margin: 0 auto 30px;
+
+    font-size: 15px;
+}
+
+.join-button {
+    display: inline-block;
+
+    background: var(--blue);
+
+    color: white;
+
+    padding: 15px 27px;
+
+    border-radius: 30px;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease;
+}
+
+.join-button:hover {
+    background: var(--black);
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    background: var(--black);
+
+    color: var(--softblue);
+
+    padding: 35px 0;
+}
+
+.footer-logo img {
+    height: 26px;
+
+    width: auto;
+
+    display: block;
+
+    margin-bottom: 12px;
+}
+
+.footer-title {
+    color: white;
+
+    font-weight: 800;
+
+    font-size: 15px;
+}
+
+.footer-text {
+    font-size: 12px;
+
+    margin-top: 8px;
+}
+
+.footer-instagram {
+    display: inline-block;
+
+    margin-top: 14px;
+
+    color: var(--lightblue);
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .agenda-hero {
+        padding: 70px 0 65px;
+    }
+
+    .agenda-hero h1 {
+        letter-spacing: -2px;
+    }
+
+    .calendar-section {
+        padding: 65px 0 70px;
+    }
+
+    .calendar-intro h2 {
+        font-size: 32px;
+    }
+
+    .calendar-box {
+        min-height: 550px;
+        border-radius: 14px;
+    }
+
+    .calendar-box iframe {
+        height: 550px;
+    }
+
+    .questions-section {
+        padding: 60px 0;
+    }
+
+    .questions-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 25px;
+    }
+
+    .questions-content h2 {
+        font-size: 32px;
+    }
+
+    .join-section {
+        padding: 65px 0 75px;
+    }
+
+}
+
+
+/* =========================================================
+   FLOATING LINKS
+========================================================= */
+
+.floating-links {
+    position: fixed;
+
+    bottom: 20px;
+    right: 20px;
+
+    z-index: 999;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+.float-btn {
+    width: 52px;
+    height: 52px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 22px;
+
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+.float-btn.whatsapp {
+    background: #25D366;
+}
+
+.float-btn.instagram {
+    background: linear-gradient(
+        45deg,
+        #f09433,
+        #e6683c,
+        #dc2743,
+        #cc2366,
+        #bc1888
+    );
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
+<nav>
+
+<div class="container nav-inner">
+
+    <div class="logo">
+
+        <img
+            src="logo.jpg"
+            alt="Anurag Toastmasters Logo">
+
+    </div>
+
+
+    <div class="nav-links">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a
+            href="agenda.html"
+            class="current">
+
+            Agenda
+
+        </a>
+
+        <a href="resources.html">
+            Resources
+        </a>
+
+    </div>
+
+
+    <div style="display:flex; align-items:center; gap:10px;">
+
+        <a
+            href="https://forms.gle/u5iXz8gvccPTfWBy9"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="nav-button">
+
+            Visit Us
+
+        </a>
+
+
+        <button
+            class="nav-toggle"
+            id="navToggle"
+            type="button"
+            aria-label="Open navigation menu"
+            aria-expanded="false">
+
+            ☰
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<div class="container">
+
+    <div
+        class="nav-mobile-menu"
+        id="navMobileMenu">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a
+            href="agenda.html"
+            class="current">
+
+            Agenda
+
+        </a>
+
+        <a href="resources.html">
+            Resources
+        </a>
+
+    </div>
+
+</div>
+
+</nav>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="agenda-hero">
+
+<div class="container">
+
+    <div class="agenda-label">
+        ANURAG TOASTMASTERS CLUB
+    </div>
+
+    <h1>
+        THE MEETING
+        <span>AGENDA.</span>
+    </h1>
+
+    <p>
+        Stay updated with our upcoming meetings,
+        dates, and meeting details.
+    </p>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     GOOGLE CALENDAR
+===================================================== -->
+
+<section class="calendar-section">
+
+<div class="container">
+
+    <div class="calendar-intro">
+
+        <div class="section-label">
+            UPCOMING MEETINGS
+        </div>
+
+        <h2>
+            Our Calendar
+        </h2>
+
+        <p>
+            Check our upcoming meetings and keep track
+            of what's happening at Anurag Toastmasters Club.
+        </p>
+
+    </div>
+
+
+        <div class="calendar-box">
+
+        <iframe
+            src="https://calendar.google.com/calendar/embed?src=7cec1323df92266687e63f41ea04fc7167d4c5a6722c0dbcb0c26ad2b9acdcb8%40group.calendar.google.com&ctz=Asia%2FKolkata"
+            style="border: 0"
+            width="100%"
+            height="600"
+            frameborder="0"
+            scrolling="no">
+        </iframe>
+
+    </div>
+
+    <p style="
+        margin-top: 18px;
+        color: var(--muted);
+        font-size: 13px;
+        text-align: center;
+    ">
+        New meeting schedules are released every month.
+    </p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     GOT QUESTIONS
+===================================================== -->
+
+<section class="questions-section">
+
+<div class="container">
+
+    <div class="questions-content">
+
+        <div>
+
+            <div class="questions-label">
+                GOT QUESTIONS?
+            </div>
+
+            <h2>
+                We're here to help.
+            </h2>
+
+            <p>
+                Have questions about Toastmasters, our meetings,
+                or how to join? Reach out to our Vice President Membership.
+            </p>
+
+        </div>
+
+
+        <!-- CONTACT VPM -->
+
+        <a
+            href="tel:+918374008301"
+            class="questions-button">
+
+            CONTACT VPM →
+
+        </a>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     JOIN US
+===================================================== -->
+
+<section class="join-section">
+
+<div class="container">
+
+    <h2>
+        Join Us.
+    </h2>
+
+    <p>
+        Want to experience Toastmasters for yourself?
+        Come join us at our next meeting.
+    </p>
+
+    <a
+        href="https://forms.gle/u5iXz8gvccPTfWBy9"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="join-button">
+
+        JOIN US →
+
+    </a>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+<div class="container">
+
+    <div class="footer-logo">
+
+        
+
+    </div>
+
+
+    <div class="footer-title">
+        Anurag Toastmasters Club
+    </div>
+
+
+    <div class="footer-text">
+        Anurag University • District 225 • Division G • Area 1
+    </div>
+
+
+    <div
+        class="footer-text"
+        style="margin-top:6px;">
+
+        For queries, contact our VPM,TM ANUSHKA:
+
+        <a
+            href="tel:+918374008301"
+            style="color:#8CB8CC; font-weight:700;">
+
+            +91 8374008301
+
+        </a>
+
+    </div>
+
+
+    <a
+        href="https://www.instagram.com/anurag.toastmasters?igsh=cWU3YmJjYXFtaGRv"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="footer-instagram">
+
+        Follow us on Instagram →
+
+    </a>
+
+</div>
+
+</footer>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+const navToggle =
+    document.getElementById("navToggle");
+
+const navMobileMenu =
+    document.getElementById("navMobileMenu");
+
+
+navToggle.addEventListener("click", function() {
+
+    const isOpen =
+        navMobileMenu.classList.toggle("open");
+
+    navToggle.textContent =
+        isOpen ? "✕" : "☰";
+
+    navToggle.setAttribute(
+        "aria-expanded",
+        isOpen
+    );
+
+});
+
+
+const mobileLinks =
+    navMobileMenu.querySelectorAll("a");
+
+
+mobileLinks.forEach(function(link) {
+
+    link.addEventListener("click", function() {
+
+        navMobileMenu.classList.remove("open");
+
+        navToggle.textContent = "☰";
+
+        navToggle.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+    });
+
+});
+
+</script>
+
+
+<!-- =====================================================
+     FLOATING LINKS
+===================================================== -->
+
+<div class="floating-links">
+
+    <!-- WHATSAPP -->
+
+    <a
+        href="https://chat.whatsapp.com/IYww5osOOqo86K6lhRHre8"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="float-btn whatsapp"
+        title="Join our WhatsApp group"
+        aria-label="WhatsApp">
+
+        <svg
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
+            fill="white"
+            xmlns="http://www.w3.org/2000/svg">
+
+            <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.87.5 3.62 1.44 5.14L2 22l5.09-1.53a9.87 9.87 0 0 0 4.95 1.34h.01c5.46 0 9.9-4.45 9.9-9.91C21.95 6.45 17.5 2 12.04 2zm5.72 14.13c-.24.68-1.4 1.3-1.93 1.35-.5.05-1.02.24-3.43-.72-2.9-1.16-4.77-4.13-4.91-4.32-.14-.19-1.17-1.56-1.17-2.98 0-1.41.74-2.1 1-2.39.26-.28.57-.35.76-.35.19 0 .38 0 .55.01.18.01.42-.07.65.5.24.58.82 2 .89 2.14.07.14.12.31.02.5-.1.19-.15.31-.3.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.02 1.12.99 2.06 1.3 2.35 1.45.29.14.46.12.63-.07.17-.19.72-.84.91-1.13.19-.29.38-.24.63-.14.26.1 1.66.78 1.94.93.28.14.47.21.54.33.07.12.07.7-.17 1.38z"/>
+
+        </svg>
+
+    </a>
+
+
+    <!-- INSTAGRAM -->
+
+    <a
+        href="https://www.instagram.com/anurag.toastmasters?igsh=cWU3YmJjYXFtaGRv"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="float-btn instagram"
+        title="Follow us on Instagram"
+        aria-label="Instagram">
+
+        <svg
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
+            fill="none"
+            stroke="white"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round">
+
+            <rect
+                x="2"
+                y="2"
+                width="20"
+                height="20"
+                rx="5.5"
+                ry="5.5" />
+
+            <path
+                d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+
+            <line
+                x1="17.5"
+                y1="6.5"
+                x2="17.51"
+                y2="6.5" />
+
+        </svg>
+
+    </a>
+
+</div>
+
+
+</body>
+</html>
